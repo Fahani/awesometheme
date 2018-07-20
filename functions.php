@@ -13,3 +13,15 @@ function awesome_script_enqueue() {
 
 // Connection WP execution process with our function
 add_action( 'wp_enqueue_scripts', 'awesome_script_enqueue' );
+
+function awesome_theme_setup() {
+    // Adding menu support in our theme
+    add_theme_support( 'menus' );
+
+    // The display locations for our menus
+    register_nav_menu( 'primary', 'Primary Header Navigation');
+    register_nav_menu( 'secondary', 'Footer Navigation');
+}
+
+// This hook will be triggered after the theme is initialized
+add_action( 'init', 'awesome_theme_setup' );
