@@ -15,8 +15,12 @@ function awesome_script_enqueue() {
 add_action( 'wp_enqueue_scripts', 'awesome_script_enqueue' );
 
 function awesome_theme_setup() {
-    // Adding menu support in our theme
+    // Adding menu support in our theme. It has a 10 pre-made support features
     add_theme_support( 'menus' );
+
+    add_theme_support( 'custom-background' );
+    add_theme_support( 'custom-header' );
+    add_theme_support( 'post-thumbnails' );
 
     // The display locations for our menus
     register_nav_menu( 'primary', 'Primary Header Navigation');
