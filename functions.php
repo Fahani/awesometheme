@@ -22,6 +22,8 @@ function awesome_theme_setup() {
     add_theme_support( 'custom-header' );
     add_theme_support( 'post-thumbnails' );
 
+    add_theme_support( 'post-formats', array( 'aside', 'image', 'video' ) );// 9 post formats
+
     // The display locations for our menus
     register_nav_menu( 'primary', 'Primary Header Navigation');
     register_nav_menu( 'secondary', 'Footer Navigation');
