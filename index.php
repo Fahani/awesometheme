@@ -1,15 +1,26 @@
 <?php get_header(); ?>
-<?php
-    if( have_posts() ): // Check if we have posts before showing them
+<div class="row">
 
-        while( have_posts() ):
+    <div class="col-xs-12 col-sm-8">
+        <?php
+        if( have_posts() ): // Check if we have posts before showing them
 
-            the_post();
+            while( have_posts() ):
 
-            get_template_part( 'content', get_post_format() );
+                the_post();
 
-        endwhile;
+                get_template_part( 'content', get_post_format() );
 
-    endif;
-?>
+            endwhile;
+
+        endif;
+        ?>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+        <?php get_sidebar(); ?>
+    </div>
+
+</div>
+
 <?php get_footer(); ?>

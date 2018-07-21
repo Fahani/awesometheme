@@ -39,3 +39,24 @@ function awesome_theme_setup() {
 
 // This hook will be triggered after the theme is initialized
 add_action( 'init', 'awesome_theme_setup' );
+
+// Sidebar function
+
+function awesome_widget_setup() {
+    register_sidebar(
+        array(
+            'name' => 'Sidebar',
+            'id' => 'sidebar-1',
+            'class' => 'custom', // WP will append sidebar- before the class. This is for the admin part
+            'description' => 'Standard sidebar',
+            // Next we have the front end
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h1 class="widget-title">',
+            'after_title' => '</h1>',
+        )
+    );
+}
+
+// When the widget are initialized
+add_action( 'widgets_init', 'awesome_widget_setup' );
