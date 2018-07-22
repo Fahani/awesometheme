@@ -63,3 +63,7 @@ function awesome_widget_setup() {
 
 // When the widget are initialized
 add_action( 'widgets_init', 'awesome_widget_setup' );
+
+/* INCLUDE WALKER CLASS */
+
+require get_template_directory() . '/inc/walker.php';
