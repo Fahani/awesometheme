@@ -13,28 +13,14 @@
                     <?php if( has_post_thumbnail() ): ?>
                         <div class="pull-right"><?php the_post_thumbnail( 'thumbnail' ) ?></div>
                     <?php endif;?>
-                    <small>
+                    <small><?php echo awesome_get_terms($post->ID, 'field'); ?> || <?php echo awesome_get_terms($post->ID, 'software'); ?>
                         <?php
-                        $terms_list = wp_get_post_terms($post->ID, 'field');
-
-                        $i = 0;
-                        foreach ($terms_list as $term):
-                            if ($i > 0) {echo ', ';}
-                            echo $term->name . '';
-                            $i++;
-                        endforeach;
-                        ?> ||
-                        <?php
-                        $terms_list = wp_get_post_terms($post->ID, 'software');
-
-                        $i = 0;
-                        foreach ($terms_list as $term):
-                            if ($i > 0) {echo ', ';}
-                            echo $term->name . '';
-                            $i++;
-                        endforeach;
-                        ?> ||
-                        <?php edit_post_link(); ?>
+                            if( current_user_can( 'manage_options' ) )
+                            {
+                                echo ' || ';
+                                edit_post_link();
+                            }
+                        ?>
                     </small>
                     <?php the_content(); ?>
 

@@ -152,3 +152,19 @@ function awesome_custom_taxonomies() {
 }
 
 add_action('init', 'awesome_custom_taxonomies');
+
+// CUSTOM TERM FUNCTION. Used in single-portfolio file
+
+function awesome_get_terms( $postId, $term ) {
+    $terms_list = wp_get_post_terms($postId, $term);
+
+    $i = 0;
+    $output = '';
+    foreach ($terms_list as $term):
+        if ($i > 0) {$output .= ', ';}
+        $output .= '<a href="'.get_term_link($term).'">'.$term->name.'</a>';
+        $i++;
+    endforeach;
+
+    return $output;
+}
