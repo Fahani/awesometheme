@@ -32,6 +32,9 @@ function awesome_theme_setup() {
 
     add_theme_support( 'post-formats', array( 'aside', 'image', 'video' ) );// 9 post formats
 
+    // Enable html5 in the search form
+    add_theme_support( 'html5', array("search-form") );
+
     // The display locations for our menus
     register_nav_menu( 'primary', 'Primary Header Navigation');
     register_nav_menu( 'secondary', 'Footer Navigation');
