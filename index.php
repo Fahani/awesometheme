@@ -7,10 +7,15 @@
             <div class="row text-center">
 
                 <?php
+                $currentPage = get_query_var('paged') ? get_query_var('paged') : 1;
 
-                if( have_posts() ): $i = 0;
+                $args = array( 'posts_per_page' =>  3,
+                                'paged' => $currentPage,); // Overrides the default number of post page
+                query_posts($args);
 
-                    while( have_posts() ): the_post(); ?>
+                if( have_posts() ): $i = 0;?>
+
+                    <?php while( have_posts() ): the_post(); ?>
 
                         <?php
                         if($i==0): $column = 12;
@@ -32,10 +37,22 @@
                             </div>
                         </div>
 
-                        <?php $i++; endwhile;
+                    <?php $i++; endwhile; ?>
 
+                    <hr>
+                    <div class="col-xs-6 text-left">
+                        <?php next_posts_link( '<< Older posts' ); ?>
+                    </div>
+
+                    <div class="col-xs-6 text-right">
+                        <?php previous_posts_link( 'Next posts >>' ); ?>
+                    </div>
+
+                    <hr>
+
+                <?php
                 endif;
-
+                wp_reset_query();
                 ?>
             </div>
 

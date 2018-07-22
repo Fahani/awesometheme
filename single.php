@@ -2,13 +2,12 @@
     <div class="row">
 
     <div class="col-xs-12 col-sm-8">
-        <?php
-        if( have_posts() ): // Check if we have posts before showing them
+        <?php if( have_posts() ): ?> // Check if we have posts before showing them
 
-            while( have_posts() ):
+            <?php while( have_posts() ): ?>
 
-                the_post();
-        ?>
+                <?php the_post(); ?>
+
                 <article id="post-<?php the_ID() ?>" <?php post_class() ?>>
                     <?php the_title('<h1 class="entry-title">', '</h1>') ?>
                     <?php if( has_post_thumbnail() ): ?>
@@ -18,6 +17,10 @@
                     <?php the_content(); ?>
 
                     <hr>
+                    <div class="row">
+                        <div class="col-xs-6 text-left"><?php previous_post_link(); ?></div>
+                        <div class="col-xs-6 text-right"><?php next_post_link(); ?></div>
+                    </div>
 
                     <?php
                     if(comments_open()):
@@ -29,11 +32,8 @@
                     endif; ?>
 
                 </article>
-        <?php
-            endwhile;
-
-        endif;
-        ?>
+            <?php endwhile; ?>
+        <?php endif; ?>
 
     </div>
 
